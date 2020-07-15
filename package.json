@@ -1,16 +1,16 @@
 {
-	"name": "stash",
+	"name": "mini-stash",
 	"version": "0.0.1",
 	"description": "ES browser storage helper",
 	"author": "Dean Verleger",
 	"license": "ISC",
-	"homepage": "https://github.com/deanbot/stash#readme",
+	"homepage": "https://github.com/deanbot/mini-stash#readme",
 	"bugs": {
-		"url": "https://github.com/deanbot/stash/issues"
+		"url": "https://github.com/deanbot/mini-stash/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/deanbot/stash.git"
+		"url": "git+https://github.com/deanbot/mini-stash.git"
 	},
 	"keywords": [
 		"local storage",
