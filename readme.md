@@ -37,34 +37,44 @@ parameters:
 
 import { clear, stash, retrieve } from 'mini-stash';
 
-const data = {
-	latitude: 33.441792,
-	longitude: -94.037689
-};
-
 // it's a good idea to prefix storage keys
 const storageKey = 'myapp-coords';
 
-// save to local storage
-stash(storageKey, data);
-
 // save to session storage
-stash(data, false);
+stash(storageKey, data, false);
 
-// retrieve from local storage (discard if data is older than a day)
+// retrieve from local storage (discard if older than a day)
 let coords = retrieve(storageKey, 60 * 24);
 if (!coords) {
 	// ... get the coords
+	coords = {
+		latitude: 33.441792,
+		longitude: -94.037689
+	};
+
+	// save to local storage
+	stash(storageKey, coords);
 }
 
-// retrieve from session storage (disable cache)
-let sessionCoords = retrieve(storageKey, 0, true);
+// retrieve from session storage (disable expiration)
+const loginStorageKey = 'myapp-login';
+let loginData = retrieve(loginStorageKey, 0, true);
+if (!loginData) {
+	// ... get login data
+	loginData = {
+		uid: 021947
+	};
+	
+	// save to session storage
+	stash(loginStorageKey, loginData, true);
+}
+
 
 // clear from local storage
 clear(storageKey);
 
 // clear from session storage
-clear(storageKey, true);
+clear(loginStorageKey, true);
 ```
 
 # Development
