@@ -40,9 +40,6 @@ import { clear, stash, retrieve } from 'mini-stash';
 // it's a good idea to prefix storage keys
 const storageKey = 'myapp-coords';
 
-// save to session storage
-stash(storageKey, data, false);
-
 // retrieve from local storage (discard if older than a day)
 let coords = retrieve(storageKey, 60 * 24);
 if (!coords) {
