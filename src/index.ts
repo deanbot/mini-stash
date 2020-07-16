@@ -38,6 +38,7 @@ export const retrieve = (
 			);
 			if (minutesOld > minutesToExpiration) {
 				clear(storageKey, useSessionStorage);
+				data = null;
 			} else {
 				data = JSON.parse(data);
 			}
