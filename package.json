@@ -1,6 +1,6 @@
 {
 	"name": "mini-stash",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "ES browser storage helper",
 	"author": "Dean Verleger",
 	"license": "ISC",
