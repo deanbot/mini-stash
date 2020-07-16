@@ -54,4 +54,4 @@ export const clear = (
 	const storage = getStorage(useSessionStorage);
 	delete storage[storageKey];
 	delete storage[getDateKey(storageKey)];
-}
+};
