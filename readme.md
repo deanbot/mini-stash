@@ -51,6 +51,11 @@ if (!coords) {
 
   // save to local storage
   stash(storageKey, coords);
+} else {
+  console.log('retrieved from local storage');
+
+  // manually clear from local storage
+  clear(storageKey);
 }
 
 // retrieve from session storage (disable expiration)
@@ -64,14 +69,12 @@ if (!loginData) {
 
   // save to session storage
   stash(loginStorageKey, loginData, true);
+} else {
+  console.log('retrieved from session storage');
+
+  // manually clear from session storage
+  clear(loginStorageKey, true);
 }
-
-
-// clear from local storage
-clear(storageKey);
-
-// clear from session storage
-clear(loginStorageKey, true);
 ```
 
 # Development
