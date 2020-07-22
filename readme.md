@@ -1,6 +1,6 @@
 # mini-stash
 
-A less-featured local/session storage wrapper.
+A less-featured local/session storage wrapper. [Read More](https://www.spiritedrefactor.net/blog/add-local-and-session-storage-support-to-a-service).
 
 ## Exported methods
 
