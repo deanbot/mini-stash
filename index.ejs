@@ -1,7 +1,63 @@
 <html>
-  <head></head>
-  <body>
-    <script type="text/javascript">
-    </script>
-  </body>
+
+<head></head>
+
+<body>
+  <script type="text/javascript">
+
+    // it's a good idea to prefix storage keys
+    const storageKey = 'myapp-coords';
+
+    let coords;
+
+    // retrieve from local storage (discard if older than 5 minutes)
+    coords = stash.retrieve(storageKey, 5);
+    if (!coords) {
+      console.log('coords not retrieved from local storage');
+      coords = {
+        latitude: 33.441792,
+        longitude: -94.037689
+      };
+
+      // save to local storage
+      stash.stash(storageKey, coords);
+    } else {
+      console.log('coords retrieved from local storage');
+
+      // clear from local storage
+      // stash.clear(storageKey);
+
+      // coords = stash.retrieve(storageKey, 60 * 24);
+
+      // if (!coords) {
+      //   console.log('coords not retrieved from local storage after clear');
+      // }
+    }
+
+    // retrieve from session storage (disable expiration)
+    const loginStorageKey = 'myapp-login';
+    let loginData;
+
+    loginData = stash.retrieve(loginStorageKey, 0, true);
+    if (!loginData) {
+      console.log('login data not retrieved from session storage');
+      // ... get login data
+      loginData = {
+        uid: '021947'
+      };
+
+      // save to session storage
+      stash.stash(loginStorageKey, loginData, true);
+    } else {
+      console.log('login data retrieved from session storage');
+
+      // stash.clear(loginStorageKey, true);
+      // loginData = stash.retrieve(loginStorageKey, 0, true);
+      // if (!loginData) {
+      //   console.log('login data not retrieved from session storage after clear');
+      // }
+    }
+  </script>
+</body>
+
 </html>

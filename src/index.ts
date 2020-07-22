@@ -3,11 +3,11 @@ const storageKeyDateSuffix = '_date';
 
 // helpers
 export interface IStorage {
-  getItem(key:string):any;
-  setItem(key:string, data:any):void;
+  getItem(key: string): any;
+  setItem(key: string, data: any): void;
 }
-const getStorage = (useSessionStorage?: boolean):IStorage => !useSessionStorage ? localStorage : sessionStorage;
-const getDateKey = (storageKey: string):string => `${storageKey}${storageKeyDateSuffix}`;
+const getStorage = (useSessionStorage?: boolean): IStorage => !useSessionStorage ? localStorage : sessionStorage;
+const getDateKey = (storageKey: string): string => `${storageKey}${storageKeyDateSuffix}`;
 
 // exported methods
 export const clear = (
@@ -22,7 +22,7 @@ export const clear = (
 };
 
 export const stash = (
-  storageKey:string,
+  storageKey: string,
   data: any,
   useSessionStorage?: boolean
 ) => {
@@ -55,9 +55,9 @@ export const retrieve = (
       const nowMs = +(new Date());
       const storageMs = +(new Date(storageDate)) * 1000;
       const minutesOld = Math.ceil(
-        nowMs - storageMs / 1000 / 60
+        (nowMs - storageMs) / 1000 / 60
       );
-      expired = minutesOld > minutesToExpiration;
+      expired = minutesOld >= minutesToExpiration;
     }
 
     if (expires && (!storageDate || expired)) {
@@ -76,4 +76,10 @@ export const retrieve = (
     }
   }
   return data;
+};
+
+export default {
+  stash,
+  clear,
+  retrieve,
 };
