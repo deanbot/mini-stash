@@ -53,8 +53,8 @@ export const retrieve = (
     let expired;
     if (expires && !!storageDate) {
       const nowMs = +(new Date());
-      const storageMs = +(new Date(storageDate)) * 1000;
-      const minutesOld = Math.ceil(
+      const storageMs = +(new Date(storageDate * 1000));
+      const minutesOld = Math.floor(
         (nowMs - storageMs) / 1000 / 60
       );
       expired = minutesOld >= minutesToExpiration;
